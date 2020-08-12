@@ -1,0 +1,118 @@
+<style>
+textarea:focus{
+
+
+  outline-style: none 
+
+}
+.mat-form-field {
+    display: inline-block;
+    position: relative;
+    text-align: left;
+    width: 50%;
+}
+</style>
+
+
+  <div class="x_panel">
+    <div class="x_title">
+         <h2>User Infromation</h2>
+        <div class="clearfix"></div>
+        <div class="x_content">
+            <form action="" style="display:flex;justify-content:center">
+  
+            <div class="example-container" class="col-md-10">
+               
+                  <input type="hidden" name="id"  [(ngModel)] = "this.student.studentID" class="form-control" placeholder="" aria-describedby="helpId"/>
+                
+                <br>
+                
+
+            
+              <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput type="text" readonly name="name"   [(ngModel)] = "this.student.studentName"  placeholder="hello" aria-describedby="helpId">
+              </mat-form-field>
+              <br>
+
+              
+            
+              <mat-form-field appearance="fill">
+                <mat-label>Father Name</mat-label>
+                <input matInput type="text"readonly name="fathername"   [(ngModel)] = "this.student.studentFatherName"  placeholder="" aria-describedby="helpId"/>
+              </mat-form-field>
+              <br>
+
+            
+              <mat-form-field appearance="fill">
+              <mat-label>Address</mat-label>
+              <input matInput type="text"readonly name="address"  [(ngModel)]  = "this.student.studentAddress"  placeholder="" aria-describedby="helpId"/>
+              </mat-form-field>
+            <br> 
+          
+             <mat-form-field appearance="fill">
+              <mat-label>Age</mat-label>
+              <input matInput type="text" readonly name="age"  [(ngModel)]  = "this.student.studentAge" placeholder="" aria-describedby="helpId"/>
+             </mat-form-field>
+              <br>    
+            
+              <mat-form-field appearance="fill">
+                <mat-label>Year</mat-label>
+                <input matInput type="text" readonly name="year"   [(ngModel)]  = "this.student.studentYear"  placeholder="" aria-describedby="helpId"/>
+              </mat-form-field>
+              <br>
+              
+             
+              <a _ngcontent-bjx-c138="" mat-raised-button="" [routerLink]="['/book',this.student.studentID]"  target="_blank" class="mat-focus-indicator mat-raised-button mat-button-base" tabindex="0" aria-disabled="false"><span class="mat-button-wrapper">Go To Shop</span><div matripple="" class="mat-ripple mat-button-ripple"></div><div class="mat-button-focus-overlay"></div></a>
+              </div>
+            </form>
+           
+</div>
+</div>
+</div>
+
+
+<div class="x_panel">
+    <div class="x_title">
+         <h2>User Infromation</h2>
+        <div class="clearfix"></div>
+        <div class="x_content">
+
+          <div class="mat-elevation-z8">
+            <mat-form-field style="font-size: 14px;width: 100%;">
+                <mat-label>Filter</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium">
+            </mat-form-field>
+            <table  style="width: 100%;" mat-table [dataSource]="dataSource">
+          
+              <!-- Position Column -->
+              <ng-container matColumnDef="BookID">
+                <th mat-header-cell *matHeaderCellDef> BookID </th>
+                <td mat-cell *matCellDef="let element"> {{element.BookID}} </td>
+              </ng-container>
+          
+              <!-- Name Column -->
+              <ng-container matColumnDef="BookTitle">
+                <th mat-header-cell *matHeaderCellDef>BookTitle</th>
+                <td mat-cell *matCellDef="let element"> {{element.BookTitle}} </td>
+              </ng-container>
+          
+              <!-- Weight Column -->
+              <ng-container matColumnDef="BorrowDate">
+                <th mat-header-cell *matHeaderCellDef> BorrowDate </th>
+                <td mat-cell *matCellDef="let element"> {{element.BorrowDate}} </td>
+              </ng-container>
+          
+              
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+             
+              
+        </table>
+          
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+      </div>
+
+</div>
+</div>
+</div>

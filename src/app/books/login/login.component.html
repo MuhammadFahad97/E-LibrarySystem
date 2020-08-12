@@ -1,0 +1,71 @@
+
+<div style="position:relative">
+    <div >
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>User Login Form <small>Please Enter The following Details</small></h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <br>
+                <form id="form1" #form = ngForm  (submit) = "formSubmit(form)" class="col-md-12 form-label-left input_mask  " style="font-size:medium " novalidate>
+
+
+                    <div class="field item form-group">
+                        <label class="col-form-label col-md-3 col-sm-3  label-align">User Name<span class="required">*</span></label>
+                        <div class="col-md-6 col-sm-6">
+                            <input value="" [(ngModel)]="this.service.userlogin.userName" value="fahad@gmail.com" class="form-control col-md fadeIn second" id="userName" style="font-size:medium" data-validate-length-range="5" name="userName" placeholder="ex. Riyad Mahrez " type="email" required="required">
+                            <small id="email_msg">User name must be unique</small>
+                        </div>
+                    </div>
+
+
+                    <div id="pass_div" class="field item form-group">
+                        <label class="col-form-label col-md-3 col-sm-3  label-align">User Password<span class="required">*</span></label>
+                        <div class="col-md-6 col-sm-6">
+                            <input value="" [(ngModel)]="this.service.userlogin.userPassword" value="abcde" class="form-control col-md fadeIn third" id="Password" type="password" style="font-size:medium" name="userPassword" placeholder="Enter Password" required="required">
+
+                        </div>
+                    </div>
+
+
+
+
+                    <br />
+
+                    <div class="form-group row d-flex justify-content-center">
+
+                        <div class="col-md-6 col-sm-6 ">
+                            <div class="ln_solid"></div>
+                            <!--
+                            <button type="button" class="btn btn-primary">Cancel</button>
+                            <button class="btn btn-primary" type="reset">Reset</button>
+                                -->
+                            <div class="form-group ">
+                                <button type="submit" class="btn btn-primary btn-block">Log in</button>
+                            </div>
+                            <div id ="forgot" class="clearfix">
+                                <label class="pull-left checkbox-inline "><input  (change)="checkValue()" type="checkbox" id="remembercheck"> Remember me</label>
+                                <input id="forgotpwd" type="button" value="Forgot Password?" class="btn btn-dark pull-right"/>
+                            </div>
+                            <!--<button class="btn btn-primary "  (click)="checkStatus()">Login Status</button>-->
+                             
+                        </div>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<!-- <script src="../vendors/validator/validator.js"></script>
+<script src="../vendors/validator/multifield.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+
+<!--
+<script src="~/JS files/CustomLoginScript.js"></script>-->

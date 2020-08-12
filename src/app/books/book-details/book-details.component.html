@@ -1,0 +1,112 @@
+<style>
+    .mat-flat-button.mat-accent, .mat-raised-button.mat-accent, .mat-fab.mat-accent, .mat-mini-fab.mat-accent {
+        box-sizing: border-box;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    -webkit-tap-highlight-color: transparent;
+    display: inline-block;
+    white-space: nowrap;
+    text-decoration: none;
+    vertical-align: baseline;
+    text-align: center;
+    margin: 0;
+    min-width: 64px;
+    line-height: 36px;
+    padding: 0 16px;
+    border-radius: 4px;
+    overflow: visible;
+    transform: translate3d(0, 0, 0);
+    transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1),box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: #ff4081;
+    
+
+    }
+    .x_title span {
+    color: white;
+}
+textarea:focus{
+
+
+    outline-style: none 
+  
+  }
+  .mat-form-field {
+      display: inline-block;
+      position: relative;
+      text-align: left;
+      width: 50%;
+  }
+</style>
+  
+
+<div class="x_panel">
+    <div class="x_title">
+         <h2>Books Infromation</h2>
+        <div class="clearfix"></div>
+        <div class="x_content">
+  
+    <form #form1="ngForm" >
+
+        <img [src]='this.book.BookImg' alt="BookIMG" srcset="">
+
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Title</mat-label>
+          <input matInput type="text" name="title" id="" readonly value="{{this.book.BookTitle}}" placeholder="" value=""  aria-describedby="helpId">
+        </mat-form-field>
+        <br>
+
+        
+
+        <mat-form-field appearance="fill">
+            <mat-label>Textarea</mat-label>
+            <textarea matInput readonly  name="Description" id="" rows="3">{{this.book.BookDescription}}</textarea>
+        </mat-form-field>
+         
+        <br/>
+
+        
+
+        <mat-form-field appearance="fill">
+            <mat-label>Student ID</mat-label>
+           <input matInput type="number" name="studentID"  id="studentID" value="{{this.studentID}}" placeholder="" aria-describedby="helpId">
+        </mat-form-field>
+        <br>
+
+
+        <div *ngIf="!this.borrowservice.Borrowed">
+
+            <mat-form-field appearance="fill">
+                <mat-label>Borrow Date</mat-label>
+             <input matInput type="text" name="" id="" readonly value="{{this.BorrowDate}}"  placeholder="" aria-describedby="helpId">
+            </mat-form-field>
+            <br>
+
+            
+            <mat-form-field appearance="fill">
+                <mat-label>Return Date</mat-label>
+             <input matInput type="text" name="" id="" readonly value="{{this.ReturnDate}}"  placeholder="" aria-describedby="helpId">
+            </mat-form-field>
+            <br>
+
+
+           
+            <button _ngcontent-lph-c138="" type="submit" mat-raised-button="" color="accent" (click) ="save(form1)" class="mat-focus-indicator mat-raised-button mat-button-base mat-accent"><span class="mat-button-wrapper">Borrow Book</span><div matripple="" class="mat-ripple mat-button-ripple"></div><div class="mat-button-focus-overlay"></div></button>
+        </div>
+        
+        <div *ngIf="this.borrowservice.Borrowed ">
+
+            <mat-label for="">This Book Is Not Available</mat-label>
+
+        </div>
+
+    </form>    
+</div>
+</div>
+</div>

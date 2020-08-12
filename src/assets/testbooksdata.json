@@ -1,0 +1,47 @@
+{
+
+"nonUserBooks":[
+{
+    "BookID":"ldkjwdk",
+    "BookTitle":"book1",
+    "MyBorrowID":1
+},
+{
+    "BookID":"ldkjwwddk",
+    "BookTitle":"book2",
+    "MyBorrowID":2
+},
+{
+    "BookID":"ldkjwdksdqd",
+    "BookTitle":"book3",
+    "MyBorrowID":3
+},
+{
+    "BookID":"ldkjkpwdk",
+    "BookTitle":"book4",
+    "MyBorrowID":4
+}
+
+],
+"userBooks":[
+
+    {
+        "BookID":"ldkjkpwdwbkbdjk",
+        "BookTitle":"book5",
+        "MyBorrowID":5,
+        "BorrowDate":"12-2-2020",
+        "StudentID":1
+    },
+    {
+        "BookID":"ldkjkpwdkywyw",
+        "BookTitle":"book6",
+        "MyBorrowID":6,
+        "BorrowDate":"12-2-2020",
+        "StudentID":1
+    }
+    
+    
+
+]
+
+}

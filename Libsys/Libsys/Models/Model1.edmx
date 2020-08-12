@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="libsysModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BorrowBooks">
+          <Key>
+            <PropertyRef Name="MyBorrowID" />
+          </Key>
+          <Property Name="MyBorrowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookID" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="BookTitle" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="BorrowDate" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="StudentID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="studentID" />
+          </Key>
+          <Property Name="studentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="studentName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="studentFatherName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="studentAddress" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="userName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="userPassword" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="userToken" Type="varchar(max)" />
+          <Property Name="studentAge" Type="int" />
+          <Property Name="studentYear" Type="int" />
+        </EntityType>
+        <Association Name="FK__BorrowBoo__Stude__35BCFE0A">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="BorrowBooks" Type="Self.BorrowBooks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="studentID" />
+            </Principal>
+            <Dependent Role="BorrowBooks">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="libsysModelStoreContainer">
+          <EntitySet Name="BorrowBooks" EntityType="Self.BorrowBooks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__BorrowBoo__Stude__35BCFE0A" Association="Self.FK__BorrowBoo__Stude__35BCFE0A">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="BorrowBooks" EntitySet="BorrowBooks" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="libsysModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BorrowBook">
+          <Key>
+            <PropertyRef Name="MyBorrowID" />
+          </Key>
+          <Property Name="MyBorrowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BookTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BorrowDate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StudentID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Student" Relationship="Self.FK__BorrowBoo__Stude__35BCFE0A" FromRole="BorrowBooks" ToRole="Students" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="studentID" />
+          </Key>
+          <Property Name="studentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="studentName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="studentFatherName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="studentAddress" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="userName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="userPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="userToken" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="studentAge" Type="Int32" />
+          <Property Name="studentYear" Type="Int32" />
+          <NavigationProperty Name="BorrowBooks" Relationship="Self.FK__BorrowBoo__Stude__35BCFE0A" FromRole="Students" ToRole="BorrowBooks" />
+        </EntityType>
+        <Association Name="FK__BorrowBoo__Stude__35BCFE0A">
+          <End Role="Students" Type="Self.Student" Multiplicity="1" />
+          <End Role="BorrowBooks" Type="Self.BorrowBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="studentID" />
+            </Principal>
+            <Dependent Role="BorrowBooks">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="libsysEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BorrowBooks" EntityType="Self.BorrowBook" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <AssociationSet Name="FK__BorrowBoo__Stude__35BCFE0A" Association="Self.FK__BorrowBoo__Stude__35BCFE0A">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="BorrowBooks" EntitySet="BorrowBooks" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="libsysModelStoreContainer" CdmEntityContainer="libsysEntities">
+          <EntitySetMapping Name="BorrowBooks">
+            <EntityTypeMapping TypeName="libsysModel.BorrowBook">
+              <MappingFragment StoreEntitySet="BorrowBooks">
+                <ScalarProperty Name="MyBorrowID" ColumnName="MyBorrowID" />
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
+                <ScalarProperty Name="BookTitle" ColumnName="BookTitle" />
+                <ScalarProperty Name="BorrowDate" ColumnName="BorrowDate" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="libsysModel.Student">
+              <MappingFragment StoreEntitySet="Students">
+                <ScalarProperty Name="studentID" ColumnName="studentID" />
+                <ScalarProperty Name="studentName" ColumnName="studentName" />
+                <ScalarProperty Name="studentFatherName" ColumnName="studentFatherName" />
+                <ScalarProperty Name="studentAddress" ColumnName="studentAddress" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="userPassword" ColumnName="userPassword" />
+                <ScalarProperty Name="userToken" ColumnName="userToken" />
+                <ScalarProperty Name="studentAge" ColumnName="studentAge" />
+                <ScalarProperty Name="studentYear" ColumnName="studentYear" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
